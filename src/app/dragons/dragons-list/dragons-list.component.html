@@ -1,5 +1,5 @@
 <ul>
-    <li *ngFor="let dragon of dragons$ | async">
+    <li *ngFor="let dragon of dragons">
         <a [routerLink]="dragon.id">{{ dragon.name }}</a>
     </li>
 </ul>

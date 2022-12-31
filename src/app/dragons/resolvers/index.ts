@@ -1,1 +1,2 @@
-export * from './dragons/dragon.resolver';
+export * from './dragon/dragon.resolver';
+export * from './dragons/dragons.resolver';

@@ -4,10 +4,8 @@ import { DragonsListComponent } from './dragons-list/dragons-list.component';
 import { DragonDetailsComponent } from './dragon-details/dragon-details.component';
 import { DragonCreateComponent } from './dragon-create/dragon-create.component';
 import { RouterModule } from '@angular/router';
-import { DragonResolver } from './resolvers';
+import { DragonResolver, DragonsResolver } from './resolvers';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
 
 @NgModule({
   declarations: [
@@ -21,6 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms';
       {
         path: '',
         component: DragonsListComponent,
+        resolve: {
+          dragons: DragonsResolver,
+        },
       },
       {
         path: 'create',
