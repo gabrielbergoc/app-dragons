@@ -14,7 +14,9 @@ export class DragonService {
     return this.httpClient.get<DragonDto[]>('http://5c4b2a47aa8ee500142b4887.mockapi.io/api/v1/dragon');
   }
 
-  // getById(id: DragonDto['id']): Observable<DragonDto> {}
+  getById(id: DragonDto['id']): Observable<DragonDto> {
+    return this.httpClient.get<DragonDto>(`http://5c4b2a47aa8ee500142b4887.mockapi.io/api/v1/dragon/${id}`);
+  }
   // create(dragon: DragonDto): Observable<void> {}
   // update(dragon: DragonDto): Observable<void> {}
   // delete(dragon: DragonDto): Observable<void> {}

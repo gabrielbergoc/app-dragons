@@ -1,1 +1,11 @@
-<p>dragon-details works!</p>
+<ng-container *ngIf="dragon">
+    <h2>{{ dragon.name }}</h2>
+    
+    <p *ngIf="dragon.type">Type: {{ dragon.type }}</p>
+    <p *ngIf="dragon.title">Title: {{ dragon.title }}</p>
+    <p *ngIf="dragon.createdAt">Created at: {{ dragon.createdAt }}</p>
+    
+    <ul *ngIf="dragon.histories as histories">
+      <li *ngFor="let history of histories">{{ history }}</li>
+    </ul>
+</ng-container>

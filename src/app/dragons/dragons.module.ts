@@ -4,6 +4,7 @@ import { DragonsListComponent } from './dragons-list/dragons-list.component';
 import { DragonDetailsComponent } from './dragon-details/dragon-details.component';
 import { DragonCreateComponent } from './dragon-create/dragon-create.component';
 import { RouterModule } from '@angular/router';
+import { DragonResolver } from './resolvers';
 
 
 
@@ -29,6 +30,9 @@ import { RouterModule } from '@angular/router';
         path: ':id',
         component: DragonDetailsComponent,
         title: ' - Details',
+        resolve: {
+          dragon: DragonResolver,
+        },
       },
     ]),
   ]
