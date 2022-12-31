@@ -1,1 +1,5 @@
-<p>dragons-list works!</p>
+<ul>
+    <li *ngFor="let dragon of dragons$ | async">
+        <a [routerLink]="dragon.id">{{ dragon.name }}</a>
+    </li>
+</ul>
