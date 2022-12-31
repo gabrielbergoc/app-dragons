@@ -5,6 +5,7 @@ import { DragonDetailsComponent } from './dragon-details/dragon-details.componen
 import { DragonCreateComponent } from './dragon-create/dragon-create.component';
 import { RouterModule } from '@angular/router';
 import { DragonResolver } from './resolvers';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -24,17 +25,18 @@ import { DragonResolver } from './resolvers';
       {
         path: 'create',
         component: DragonCreateComponent,
-        title: ' - Create a Dragon',
+        title: 'Dragons - Create a Dragon',
       },
       {
         path: ':id',
         component: DragonDetailsComponent,
-        title: ' - Details',
+        title: 'Dragons - Details',
         resolve: {
           dragon: DragonResolver,
         },
       },
     ]),
+    ReactiveFormsModule,
   ]
 })
 export class DragonsModule { }
