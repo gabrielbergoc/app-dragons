@@ -22,7 +22,10 @@ export class DragonService {
   create(dragon: Omit<DragonDto, 'id'>): Observable<void> {
     return this.httpClient.post<void>(this.endpoint, dragon);
   }
-  // update(dragon: DragonDto): Observable<void> {}
+
+  update(dragon: DragonDto): Observable<void> {
+    return this.httpClient.put<void>(`${this.endpoint}/${dragon.id}`, dragon);
+  }
 
   delete(dragonId: DragonDto['id']): Observable<void> {
     return this.httpClient.delete<void>(`${this.endpoint}/${dragonId}`);

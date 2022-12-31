@@ -1,4 +1,4 @@
-<form [formGroup]="dragonForm" (ngSubmit)="createDragon()">
+<form [formGroup]="dragonForm" (ngSubmit)="create ? createDragon() : updateDragon()">
     <label for="name">Name</label>
     &nbsp;
     <input id="name" type="text" formControlName="name" required>
@@ -24,7 +24,10 @@
         </div>
     </div>
 
+    <button type="button" routerLink="..">Cancel</button>
     <button [disabled]="dragonForm.invalid">Submit</button>
     <br>
     <small *ngIf="dragonForm.invalid">Name is required</small>
 </form>
+
+<a routerLink="/">Home</a>

@@ -29,6 +29,14 @@ import { ReactiveFormsModule } from '@angular/forms';
         title: 'Dragons - Create a Dragon',
       },
       {
+        path: ':id/edit',
+        component: DragonCreateComponent,
+        title: 'Dragons - Edit a Dragon',
+        resolve: {
+          dragon: DragonResolver,
+        },
+      },
+      {
         path: ':id',
         component: DragonDetailsComponent,
         title: 'Dragons - Details',
