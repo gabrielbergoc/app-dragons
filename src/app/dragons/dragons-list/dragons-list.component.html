@@ -1,6 +1,8 @@
 <ul>
     <li *ngFor="let dragon of dragons">
         <a [routerLink]="dragon.id">{{ dragon.name }}</a>
+        &nbsp;
+        <button (click)="deleteDragon(dragon.id)"> - </button>
     </li>
 </ul>
 

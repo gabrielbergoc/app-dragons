@@ -15,13 +15,16 @@ export class DragonService {
     return this.httpClient.get<DragonDto[]>(this.endpoint);
   }
 
-  getById(id: DragonDto['id']): Observable<DragonDto> {
-    return this.httpClient.get<DragonDto>(`${this.endpoint}/${id}`);
+  getById(dragonId: DragonDto['id']): Observable<DragonDto> {
+    return this.httpClient.get<DragonDto>(`${this.endpoint}/${dragonId}`);
   }
 
   create(dragon: Omit<DragonDto, 'id'>): Observable<void> {
     return this.httpClient.post<void>(this.endpoint, dragon);
   }
   // update(dragon: DragonDto): Observable<void> {}
-  // delete(dragon: DragonDto): Observable<void> {}
+
+  delete(dragonId: DragonDto['id']): Observable<void> {
+    return this.httpClient.delete<void>(`${this.endpoint}/${dragonId}`);
+  }
 }
