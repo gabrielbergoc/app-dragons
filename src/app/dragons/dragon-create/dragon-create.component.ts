@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DragonDto } from '../models';
 import { DragonService } from '../services/dragon.service';
@@ -52,6 +52,10 @@ export class DragonCreateComponent implements OnInit {
 
   get histories(): FormArray {
     return this.dragonForm.get('histories') as FormArray;
+  }
+
+  get historiesControls(): FormControl[] {
+    return (this.dragonForm.get('histories') as FormArray)?.controls as FormControl[];
   }
 
   createDragon() {

@@ -23,9 +23,9 @@
   &nbsp;
   <button type="button" (click)="addHistoryField()">+</button>
   <div id="histories" formArrayName="histories">
-    <div *ngFor="let historyControl of histories.controls; index as i">
-      <input [id]="'history-' + (i + 1)" type="textarea" />
-      <button type="button" (click)="removeHistoryField(i)">-</button>
+    <div class="history-container" *ngFor="let historyControl of historiesControls; index as i">
+      <textarea [id]="'history-' + (i + 1)" [formControl]="historyControl"></textarea>
+      <button type="button" (click)="removeHistoryField(i)">➖</button>
     </div>
   </div>
 
