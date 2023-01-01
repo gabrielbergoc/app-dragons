@@ -1,9 +1,11 @@
+@import 'src/styles';
+
 .footer {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #f1bc31;
-  color: #7c0a02;
+  background-color: $color-quaternary;
+  color: $color-primary;
   text-align: center;
 }

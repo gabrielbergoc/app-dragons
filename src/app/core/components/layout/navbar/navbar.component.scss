@@ -1,23 +1,25 @@
+@import 'src/styles';
+
 .navbar {
-  background-color: #7C0A02;
+  background-color: $color-primary;
   overflow: hidden;
-}
 
-.navbar a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 1.5rem;
-}
+  a {
+    float: left;
+    color: $color-off-white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1.5rem;
 
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.navbar a.active {
-  background-color: #E25822;
-  color: white;
+    &:hover {
+      background-color: $color-light-grey;
+      color: black;
+    }
+    
+    &.active {
+      background-color: $color-terciary;
+      color: white;
+    }
+  }
 }
