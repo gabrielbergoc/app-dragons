@@ -24,5 +24,9 @@ export class NavbarComponent {
       name: 'About',
       link: 'about',
     },
+    {
+      name: 'Logout',
+      link: 'logout',
+    },
   ];
 }

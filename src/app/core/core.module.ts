@@ -7,6 +7,10 @@ import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { AboutComponent } from './components/about/about.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/auth.guard';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 
@@ -17,14 +21,27 @@ import { AboutComponent } from './components/about/about.component';
     NavbarComponent,
     FooterComponent,
     HomepageComponent,
-    AboutComponent
+    AboutComponent,
+    LoginPageComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
+        path: 'login',
+        component: LoginPageComponent,
+        title: 'Login',
+      },
+      {
+        path: 'logout',
+        component: LogoutComponent,
+        title: 'Logout',
+      },
+      {
         path: '',
         component: LayoutComponent,
+        canActivateChild: [AuthGuard],
         children: [
           {
             path: '',
@@ -49,6 +66,7 @@ import { AboutComponent } from './components/about/about.component';
         ]
       },
     ]),
+    ReactiveFormsModule,
   ]
 })
 export class CoreModule { }

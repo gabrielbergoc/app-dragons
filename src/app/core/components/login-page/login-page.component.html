@@ -1,0 +1,17 @@
+<h1>Login</h1>
+
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <label for="user">User</label>
+  &nbsp;
+  <input type="text" formControlName="user" id="user" />
+  <br>
+
+  <label for="password">Password</label>
+  &nbsp;
+  <input type="password" formControlName="password" id="password" />
+  <br>
+
+  <button [disabled]="loginForm.invalid">Login</button>
+  <br>
+  <small *ngIf="loginForm.invalid && userControl.touched && passwordControl.touched">Please inform a user and password</small>
+</form>
