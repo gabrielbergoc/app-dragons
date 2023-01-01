@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <ng-container *ngIf="dragon">
   <h2>{{ dragon.name }}</h2>
 
@@ -9,7 +11,6 @@
     <li *ngFor="let history of histories">{{ history }}</li>
   </ul>
 
-  <a routerLink="edit">Edit</a>
-  &nbsp;
-  <a routerLink="/">Home</a>
+  <button routerLink="edit">Edit</button>
+  <button routerLink="..">Go back</button>
 </ng-container>

@@ -1,9 +1,9 @@
-<ul>
-    <li *ngFor="let dragon of dragons">
-        <a [routerLink]="dragon.id">{{ dragon.name }}</a>
-        &nbsp;
-        <button (click)="deleteDragon(dragon.id)"> - </button>
-    </li>
-</ul>
+<app-header></app-header>
 
-<button routerLink="create">Create dragon</button>
+<ul>
+  <li *ngFor="let dragon of dragons">
+    <a [routerLink]="dragon.id">{{ dragon.name }}</a>
+    &nbsp;
+    <button (click)="deleteDragon(dragon.id)">-</button>
+  </li>
+</ul>

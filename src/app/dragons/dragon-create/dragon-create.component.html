@@ -1,33 +1,36 @@
-<form [formGroup]="dragonForm" (ngSubmit)="create ? createDragon() : updateDragon()">
-    <label for="name">Name</label>
-    &nbsp;
-    <input id="name" type="text" formControlName="name" required>
-    <br>
-    
-    <label for="type">Type</label>
-    &nbsp;
-    <input id="type" type="text" formControlName="type">
-    <br>
-    
-    <label for="title">Title</label>
-    &nbsp;
-    <input id="title" type="text" formControlName="title">
-    <br>
+<app-header></app-header>
 
-    <label for="histories">Histories</label>
-    &nbsp;
-    <button type="button" (click)="addHistoryField()">+</button>
-    <div id="histories" formArrayName="histories">
-        <div *ngFor="let historyControl of histories.controls; index as i">
-            <input [id]="'history-' + (i + 1)" type="textarea">
-            <button type="button" (click)="removeHistoryField(i)"> - </button>
-        </div>
+<form
+  [formGroup]="dragonForm"
+  (ngSubmit)="create ? createDragon() : updateDragon()"
+>
+  <label for="name">Name</label>
+  &nbsp;
+  <input id="name" type="text" formControlName="name" required />
+  <br />
+
+  <label for="type">Type</label>
+  &nbsp;
+  <input id="type" type="text" formControlName="type" />
+  <br />
+
+  <label for="title">Title</label>
+  &nbsp;
+  <input id="title" type="text" formControlName="title" />
+  <br />
+
+  <label for="histories">Histories</label>
+  &nbsp;
+  <button type="button" (click)="addHistoryField()">+</button>
+  <div id="histories" formArrayName="histories">
+    <div *ngFor="let historyControl of histories.controls; index as i">
+      <input [id]="'history-' + (i + 1)" type="textarea" />
+      <button type="button" (click)="removeHistoryField(i)">-</button>
     </div>
+  </div>
 
-    <button type="button" routerLink="..">Cancel</button>
-    <button [disabled]="dragonForm.invalid">Submit</button>
-    <br>
-    <small *ngIf="dragonForm.invalid">Name is required</small>
+  <button type="button" routerLink="..">Cancel</button>
+  <button [disabled]="dragonForm.invalid">Submit</button>
+  <br />
+  <small *ngIf="dragonForm.invalid">Name is required</small>
 </form>
-
-<a routerLink="/">Home</a>

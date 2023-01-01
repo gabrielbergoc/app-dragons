@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DragonsListComponent } from './dragons-list/dragons-list.component';
-import { DragonDetailsComponent } from './dragon-details/dragon-details.component';
-import { DragonCreateComponent } from './dragon-create/dragon-create.component';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+import { DragonCreateComponent } from './dragon-create/dragon-create.component';
+import { DragonDetailsComponent } from './dragon-details/dragon-details.component';
+import { DragonsListComponent } from './dragons-list/dragons-list.component';
 import { DragonResolver, DragonsResolver } from './resolvers';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,12 +26,12 @@ import { ReactiveFormsModule } from '@angular/forms';
       {
         path: 'create',
         component: DragonCreateComponent,
-        title: 'Dragons - Create a Dragon',
+        title: 'Create a Dragon®',
       },
       {
         path: ':id/edit',
         component: DragonCreateComponent,
-        title: 'Dragons - Edit a Dragon',
+        title: 'Edit a Dragon®',
         resolve: {
           dragon: DragonResolver,
         },
@@ -39,13 +39,13 @@ import { ReactiveFormsModule } from '@angular/forms';
       {
         path: ':id',
         component: DragonDetailsComponent,
-        title: 'Dragons - Details',
+        title: 'Dragons® Details',
         resolve: {
           dragon: DragonResolver,
         },
       },
     ]),
-    ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class DragonsModule { }

@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+import { AboutComponent } from './components/about/about.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { NavbarComponent } from './components/layout/navbar/navbar.component';
-import { FooterComponent } from './components/layout/footer/footer.component';
-import { HomepageComponent } from './components/homepage/homepage.component';
-import { AboutComponent } from './components/about/about.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AuthGuard } from './guards/auth.guard';
 import { LogoutComponent } from './components/logout/logout.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -46,17 +46,17 @@ import { LogoutComponent } from './components/logout/logout.component';
           {
             path: '',
             component: HomepageComponent,
-            title: 'Home'
+            title: 'Welcome to Dragons®'
           },
           {
             path: 'dragons',
             loadChildren: () => import('../dragons/dragons.module').then(m => m.DragonsModule),
-            title: 'Dragons',
+            title: 'Dragons® list',
           },
           {
             path: 'about',
             component: AboutComponent,
-            title: 'About',
+            title: 'About Dragons®',
           },
           {
             path: '**',
@@ -66,7 +66,7 @@ import { LogoutComponent } from './components/logout/logout.component';
         ]
       },
     ]),
-    ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class CoreModule { }
