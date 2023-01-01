@@ -5,32 +5,29 @@
   (ngSubmit)="create ? createDragon() : updateDragon()"
 >
   <label for="name">Name</label>
-  &nbsp;
   <input id="name" type="text" formControlName="name" required />
-  <br />
 
   <label for="type">Type</label>
-  &nbsp;
   <input id="type" type="text" formControlName="type" />
-  <br />
 
   <label for="title">Title</label>
-  &nbsp;
   <input id="title" type="text" formControlName="title" />
-  <br />
 
-  <label for="histories">Histories</label>
-  &nbsp;
-  <button type="button" (click)="addHistoryField()">+</button>
+  <label for="histories">
+    Histories
+    <button type="button" title="Add a history field" (click)="addHistoryField()">➕</button>
+  </label>
   <div id="histories" formArrayName="histories">
     <div class="history-container" *ngFor="let historyControl of historiesControls; index as i">
-      <textarea [id]="'history-' + (i + 1)" [formControl]="historyControl"></textarea>
-      <button type="button" (click)="removeHistoryField(i)">➖</button>
+      <label [htmlFor]="'history-' + (i + 1)">History #{{ i + 1 }}</label>
+      <div class="textarea-and-button-container">
+        <textarea title="History" placeholder="Once upon a time..." [id]="'history-' + (i + 1)" [formControl]="historyControl"></textarea>
+        <button type="button" [title]="'Remove History #' + (i + 1) +  ' field'" (click)="removeHistoryField(i)">➖</button>
+      </div>
     </div>
   </div>
 
-  <button type="button" routerLink="..">Cancel</button>
-  <button [disabled]="dragonForm.invalid">Submit</button>
-  <br />
+  <button type="button" title="Go back without registering a dragon" routerLink="..">Cancel</button>
+  <button title="Register a dragon" [disabled]="dragonForm.invalid">Submit</button>
   <small *ngIf="dragonForm.invalid">Name is required</small>
 </form>

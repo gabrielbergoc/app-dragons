@@ -1,5 +1,50 @@
-@import 'src/assets/styles/colors';
+@import "src/assets/styles/colors";
 
 body {
   margin: 0;
+}
+
+div.body {
+  margin: 5px 10px;
+}
+
+table {
+  margin: 5px;
+  padding: 5px;
+  border-collapse: collapse;
+
+  th {
+    border-bottom: 2px solid;
+    text-align: left;
+  }
+
+  tbody {
+    button {
+      width: 100%;
+    }
+  }
+
+  td,
+  th {
+    margin: 4px;
+    padding: 4px;
+  }
+}
+
+h1 {
+  margin: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: small;
+  }
+
+  input {
+    margin-bottom: 5px;
+    width: auto;
+  }
 }

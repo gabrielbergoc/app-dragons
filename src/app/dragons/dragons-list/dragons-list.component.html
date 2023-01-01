@@ -1,9 +1,23 @@
 <app-header></app-header>
 
-<ul>
-  <li *ngFor="let dragon of dragons">
-    <a [routerLink]="dragon.id">{{ dragon.name }}</a>
-    &nbsp;
-    <button (click)="deleteDragon(dragon.id)">-</button>
-  </li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Dragon</th>
+      <th>Details</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let dragon of dragons">
+      <td>{{ dragon.name }}</td>
+      <td>
+        <button title="Details" [routerLink]="dragon.id">🔍</button>
+      </td>
+      <td>
+        <button title="Delete" (click)="deleteDragon(dragon.id)">🗑</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
