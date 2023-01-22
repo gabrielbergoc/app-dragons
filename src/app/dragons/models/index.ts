@@ -1,1 +1,2 @@
-export * from './dragon/dragon.dto';
+export * from './dragon.dto';
+export * from './history.dto';

@@ -7,27 +7,63 @@
   <label for="name">Name</label>
   <input id="name" type="text" formControlName="name" required />
 
-  <label for="type">Type</label>
-  <input id="type" type="text" formControlName="type" />
-
   <label for="title">Title</label>
-  <input id="title" type="text" formControlName="title" />
+  <input id="title" type="text" formControlName="title" required />
 
   <label for="histories">
     Histories
-    <button type="button" title="Add a history field" (click)="addHistoryField()">➕</button>
+    <button
+      type="button"
+      title="Add a history field"
+      (click)="addHistoryField()"
+    >
+      ➕
+    </button>
   </label>
   <div id="histories" formArrayName="histories">
-    <div class="history-container" *ngFor="let historyControl of historiesControls; index as i">
+    <form
+      [formGroup]="historyGroup"
+      class="history-container"
+      *ngFor="let historyGroup of historiesGroups; index as i"
+    >
       <label [htmlFor]="'history-' + (i + 1)">History #{{ i + 1 }}</label>
-      <div class="textarea-and-button-container">
-        <textarea title="History" placeholder="Once upon a time..." [id]="'history-' + (i + 1)" [formControl]="historyControl"></textarea>
-        <button type="button" [title]="'Remove History #' + (i + 1) +  ' field'" (click)="removeHistoryField(i)">➖</button>
+      <div>
+        <input
+          type="text"
+          [title]="'Title for history #' + (i + 1)"
+          formControlName="title"
+          placeholder="Title"
+          required
+        />
       </div>
-    </div>
+      <div class="textarea-and-button-container">
+        <textarea
+          title="History"
+          placeholder="Once upon a time..."
+          [id]="'history-' + (i + 1)"
+          formControlName="content"
+          required
+        ></textarea>
+        <button
+          type="button"
+          [title]="'Remove History #' + (i + 1) + ' field'"
+          (click)="removeHistoryField(i)"
+        >
+          ➖
+        </button>
+      </div>
+    </form>
   </div>
 
-  <button type="button" title="Go back without registering a dragon" routerLink="..">Cancel</button>
-  <button title="Register a dragon" [disabled]="dragonForm.invalid">Submit</button>
-  <small *ngIf="dragonForm.invalid">Name is required</small>
+  <button
+    type="button"
+    title="Go back without registering a dragon"
+    routerLink=".."
+  >
+    Cancel
+  </button>
+  <button title="Register a dragon" [disabled]="dragonForm.invalid">
+    Submit
+  </button>
+  <small *ngIf="dragonForm.touched && dragonForm.invalid">Name, Title, and Histories' fields are required</small>
 </form>

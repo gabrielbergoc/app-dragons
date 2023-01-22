@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DragonDto } from '../models';
+import { DragonDto, History } from '../models';
 import { DragonService } from '../services/dragon.service';
 
 @Component({
@@ -11,13 +11,15 @@ import { DragonService } from '../services/dragon.service';
 })
 export class DragonCreateComponent implements OnInit {
   create = true;
-  dragonId: DragonDto['id'];
+  dragonId?: DragonDto['id'];
   dragonForm: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
-    type: [''],
-    title: [''],
+    title: ['', [Validators.required]],
     histories: this.fb.array([
-      this.fb.control(''),
+      this.fb.group({
+        title: ['', [Validators.required]],
+        content: ['', [Validators.required]],
+      }),
     ]),
   });
 
@@ -42,8 +44,15 @@ export class DragonCreateComponent implements OnInit {
 
         if (dragon.histories) {
           this.histories.removeAt(0);
-          dragon.histories.forEach((history: string) => {
-            this.histories.push(this.fb.control(history));
+          dragon.histories.forEach((history: History) => {
+            this.histories.push(
+              this.fb.group({
+                id: [history.id],
+                dragonId: [dragon.id],
+                title: [history.title, [Validators.required]],
+                content: [history.content, [Validators.required]],
+              }),
+            );
           });
         }
       }
@@ -54,8 +63,8 @@ export class DragonCreateComponent implements OnInit {
     return this.dragonForm.get('histories') as FormArray;
   }
 
-  get historiesControls(): FormControl[] {
-    return (this.dragonForm.get('histories') as FormArray)?.controls as FormControl[];
+  get historiesGroups(): FormGroup[] {
+    return (this.dragonForm.get('histories') as FormArray)?.controls as FormGroup[] ?? [];
   }
 
   createDragon() {
@@ -73,7 +82,13 @@ export class DragonCreateComponent implements OnInit {
   }
 
   addHistoryField() {
-    this.histories.push(this.fb.control(''));
+    this.histories.push(
+      this.fb.group({
+        dragonId: [this.dragonId],
+        title: ['', [Validators.required]],
+        content: ['', [Validators.required]],
+      }),
+    );
   }
 
   removeHistoryField(i: number) {

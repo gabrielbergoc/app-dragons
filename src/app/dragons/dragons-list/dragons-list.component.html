@@ -13,7 +13,7 @@
     <tr *ngFor="let dragon of dragons">
       <td>{{ dragon.name }}</td>
       <td>
-        <button title="Details" [routerLink]="dragon.id">🔍</button>
+        <button title="Details" [routerLink]="dragon.id.toString()">🔍</button>
       </td>
       <td>
         <button title="Delete" (click)="deleteDragon(dragon.id)">🗑</button>

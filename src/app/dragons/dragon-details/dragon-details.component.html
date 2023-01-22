@@ -3,14 +3,44 @@
 <ng-container *ngIf="dragon">
   <h2>{{ dragon.name }}</h2>
 
-  <p *ngIf="dragon.type">Type: {{ dragon.type }}</p>
-  <p *ngIf="dragon.title">Title: {{ dragon.title }}</p>
-  <p *ngIf="dragon.createdAt">Created at: {{ dragon.createdAt }}</p>
+  <table>
+    <tbody>
+      <tr>
+        <td class="attribute">
+          Title
+        </td>
+        <td class="attr-value">
+          {{ dragon.title }}
+        </td>
+      </tr>
 
-  <ul *ngIf="dragon.histories as histories">
-    <li *ngFor="let history of histories">{{ history }}</li>
-  </ul>
+      <tr>
+        <td class="attribute">
+          Created at
+        </td>
+        <td class="attr-value">
+          {{ dragon.createdAt }}
+        </td>
+      </tr>
 
-  <button routerLink="edit">Edit</button>
-  <button routerLink="..">Go back</button>
+      <tr>
+        <td class="attribute">
+          Last modified at
+        </td>
+        <td class="attr-value">
+          {{ dragon.lastModifiedAt }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngFor="let history of dragon.histories; index as i">
+    <h3>History #{{ i + 1 }}: {{ history.title }}</h3>
+    <div class="history-content">{{ history.content }}</div>
+  </div>
+
+  <div class="buttons-container">
+    <button routerLink="edit">Edit</button>
+    <button routerLink="..">Go back</button>
+  </div>
 </ng-container>
