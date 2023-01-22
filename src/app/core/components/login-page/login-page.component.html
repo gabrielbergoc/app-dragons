@@ -1,17 +1,14 @@
-<app-header></app-header>
-
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-  <label for="user">User</label>
-  &nbsp;
-  <input type="text" formControlName="user" id="user" />
-  <br>
-
-  <label for="password">Password</label>
-  &nbsp;
-  <input type="password" formControlName="password" id="password" />
-  <br>
-
-  <button [disabled]="loginForm.invalid">Login</button>
-  <br>
-  <small *ngIf="loginForm.invalid && userControl.touched && passwordControl.touched">Please inform a user and password</small>
-</form>
+<div class="page-container">
+  <app-header></app-header>
+  
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <label for="user">User</label>
+    <input type="text" formControlName="user" id="user" />
+  
+    <label for="password">Password</label>
+    <input type="password" formControlName="password" id="password" />
+  
+    <button [disabled]="loginForm.invalid">Login</button>
+    <small *ngIf="loginForm.invalid && userControl.touched && passwordControl.touched">Please inform a user and password</small>
+  </form>
+</div>

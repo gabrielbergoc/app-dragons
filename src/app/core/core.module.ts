@@ -11,6 +11,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { LogoutComponent } from './components/logout/logout.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
+import { LoginGuard } from './guards/login.guard';
 
 
 
@@ -23,7 +24,7 @@ import { AuthGuard } from './guards/auth.guard';
     HomepageComponent,
     AboutComponent,
     LoginPageComponent,
-    LogoutComponent
+    LogoutComponent,
   ],
   imports: [
     CommonModule,
@@ -32,11 +33,17 @@ import { AuthGuard } from './guards/auth.guard';
         path: 'login',
         component: LoginPageComponent,
         title: 'Login',
+        canActivate: [LoginGuard],
       },
       {
         path: 'logout',
         component: LogoutComponent,
         title: 'Logout',
+      },
+      {
+        path: 'home',
+        redirectTo: '',
+        pathMatch: 'full',
       },
       {
         path: '',
@@ -58,12 +65,12 @@ import { AuthGuard } from './guards/auth.guard';
             component: AboutComponent,
             title: 'About Dragons®',
           },
-          {
-            path: '**',
-            component: NotFoundComponent,
-            title: 'Not found',
-          },
         ]
+      },
+      {
+        path: '**',
+        component: NotFoundComponent,
+        title: 'Not found',
       },
     ]),
     SharedModule,
