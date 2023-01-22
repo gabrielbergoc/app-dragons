@@ -7,7 +7,7 @@ import { DragonDto } from '../models';
   providedIn: 'root'
 })
 export class DragonService {
-  private endpoint = 'http://5c4b2a47aa8ee500142b4887.mockapi.io/api/v1/dragon';
+  private endpoint = 'http://localhost:5133/api/v1/dragons';
 
   constructor(private readonly httpClient: HttpClient) { }
 
