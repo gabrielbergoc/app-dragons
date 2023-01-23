@@ -24,7 +24,7 @@ export class DragonsListComponent implements OnInit {
         this.router.navigateByUrl('/');
       }
 
-      this.dragons = dragons;
+      this.dragons = dragons.sort((a: DragonDto, b: DragonDto) => a.name > b.name ? 1 : a.name < b.name ? -1 : 0);
     });
   }
 
