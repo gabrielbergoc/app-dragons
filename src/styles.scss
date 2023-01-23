@@ -1,12 +1,13 @@
 @import "src/assets/styles/colors";
 
-body {
-  margin: 0;
+html {
+  background-color: $color-light-grey;
   font-family: 'Italianno', cursive;
+  font-size: x-large;
 }
 
-div.body {
-  margin: 5px 10px;
+body {
+  margin: 0;
 }
 
 table {
@@ -47,5 +48,35 @@ form {
   input {
     margin-bottom: 5px;
     width: auto;
+  }
+}
+
+a:link {
+  text-decoration: none;
+  color: black
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 1rem;
+
+  &:hover {
+    background: #555;
   }
 }
