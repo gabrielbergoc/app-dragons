@@ -8,3 +8,4 @@ export interface DragonDto {
   createdAt: Date;
   lastModifiedAt: Date;
 }
+// TODO: add image property
